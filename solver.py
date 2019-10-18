@@ -59,6 +59,7 @@ class Tabla:
 		self.matriz = [[0 for x in range(5)] for x in range(5)] 
 		self.puntos = 20
 		self.approve = 0
+		self.encontrado = False
 
 	def getMatriz(self, x, y):
 		return self.matriz[x][y]
@@ -133,191 +134,116 @@ class Tabla:
 		except:
 			self.puntos -= punish_score
 
-		##########################################################
-		#The Englishman lives in the red house.
+		# El que vive en la casa verde está a la derecha del de la casa negra
 		try:
-			i = self.matriz[1].index('Englishman')
-			if self.matriz[0][i] == 'red':
-				#print('The Englishman lives in the red house.')
-				self.puntos += 1	
-				self.approve +=1
-			else:
-					self.puntos -= fail_score
-		except:
-			self.puntos -= punish_score
-
-
-		#The Swede keeps dogs.
-		try:
-			i = self.matriz[1].index('Swede')
-			if self.matriz[3][i] == 'dogs':
-				#print('The Swede keeps dogs')
-				self.puntos += 1	
-				self.approve +=1
-			else:
-					self.puntos -= fail_score
-		except:
-			self.puntos -= punish_score
-
-		#The Dane drinks tea.
-		try:
-			i = self.matriz[1].index('Dane')
-			if self.matriz[4][i] == 'tea':
-				#print('The Dane drinks tea')
-				self.puntos += 1	
-				self.approve +=1
-			else:
-					self.puntos -= fail_score
-		except:
-			self.puntos -= punish_score
-
-		#The green house is just to the left of the white one.
-		try:
-			i = self.matriz[0].index('green')
-			if self.matriz[0][i+1] == 'white':
-				#print('The green house is just to the left of the white one.')
-				self.puntos += 1	
-				self.approve +=1
-			else:
-					self.puntos -= fail_score
-		except:
-			self.puntos -= punish_score
-
-		#The owner of the green house drinks coffee.
-		try:
-			i = self.matriz[0].index('green')
-			if self.matriz[4][i] == 'coffee':
-				#print('The owner of the green house drinks coffee.')
-				self.puntos += 1	
-				self.approve +=1
-			else:
-					self.puntos -= fail_score
-		except:
-			self.puntos -= punish_score
-
-		#The Pall Mall smoker keeps birds.
-		try:
-			i = self.matriz[2].index('Pall Mall')
-			if self.matriz[3][i] == 'birds':
-				#print('The Pall Mall smoker keeps birds.')
-				self.puntos += 1	
-				self.approve +=1
-			else:
-					self.puntos -= fail_score
-		except:
-			self.puntos -= punish_score
-
-		#The owner of the yellow house smokes Dunhills.
-		try:
-			i = self.matriz[0].index('yellow')
-			if self.matriz[2][i] == 'Dunhills':
-				#print('The owner of the yellow house smokes Dunhills.')
-				self.puntos += 1	
-				self.approve +=1
+			i = self.matriz[0].index('verde')
+			if self.matriz[0][i+1] == 'negra':
+				print('El que vive en la casa verde está a la derecha del de la casa negra')
 			else:
 				self.puntos -= fail_score
 		except:
 			self.puntos -= punish_score
 
-		#The man in the center house drinks milk.
+		# El que usa Redis codea en java
 		try:
-			if self.matriz[4][2] == 'milk':
-				#print('The man in the center house drinks milk.')
-				self.puntos += 1	
-				self.approve +=1
+			i = self.matriz[4].index('redis')
+			if self.matriz[2][i] == 'java':
+				print('El que usa redis codea en java')
 			else:
 				self.puntos -= fail_score
 		except:
 			self.puntos -= punish_score
 
-		#The Norwegian lives in the first house.
+		# El que usa Cassandra vive en la casa amarilla
 		try:
-			if self.matriz[1][0] == 'Norwegian':
-				#print('The Norwegian lives in the first house.')
-				self.puntos += 1	
-				self.approve +=1
+			i = self.matriz[4].index('cassandra')
+			if self.matriz[0][i] == 'amarilla':
+				print('El que usa cassandra vive en la casa amarilla')
 			else:
 				self.puntos -= fail_score
 		except:
 			self.puntos -= punish_score
 
-		#The Blend smoker has a neighbor who keeps cats.
+		# El que usa notepad++ vive en la casa del medio (la 3)
 		try:
-			i = self.matriz[2].index('Blend')
-			if i==0:
-				if self.matriz[3][i+1] == 'cats':
-					#print('The Blend smoker has a neighbor who keeps cats.')
-					self.puntos += 1
-					self.approve +=1
-				else:
-					self.puntos -= fail_score
-			elif i==4:
-				if self.matriz[3][i-1] == 'cats':
-					#print('The Blend smoker has a neighbor who keeps cats.')
-					self.puntos += 1
-					self.approve +=1
-				else:
-					self.puntos -= fail_score
+			i = self.matriz[3].index('notepad++')
+			if self.matriz[3][2] == 'notepad++':
+				print('El que usa notepad++ vive en la casa del medio')
 			else:
-				if self.matriz[3][i+1] == 'cats' or self.matriz[3][i-1] == 'cats':
-					#print('The Blend smoker has a neighbor who keeps cats.')
-					self.puntos += 1
-					self.approve +=1
-				else:
-					self.puntos -= fail_score
+				self.puntos -= fail_score
 		except:
 			self.puntos -= punish_score
-
-		#The man who smokes Blue Masters drinks bier.
+		
+		# El desarrollador vive en la primera casa
 		try:
-			i = self.matriz[2].index('Blue Masters')
-			if self.matriz[4][i] == 'bier':
-				#print('The man who smokes Blue Masters drinks bier.')
-				self.puntos += 1	
-				self.approve +=1
+			i = self.matriz[1].index('desarrollador')
+			if self.matriz[1][0] == 'desarrollador':
+				print('El desarrollador vive en la primera casa')
 			else:
 				self.puntos -= fail_score
 		except:
 			self.puntos -= punish_score
 
-		#The man who keeps horses lives next to the Dunhill smoker.
-		try:
-			i = self.matriz[3].index('horse')
-			if self.matriz[2][i-1] == 'Dunhills':
-				#print('The man who keeps horses lives next to the Dunhill smoker.')
-				self.puntos += 1	
-				self.approve +=1
+		# El que usa hadoop vive al lado del que codea javascript [a la derecha]
+		try:	
+			i = self.matriz[4].index('hadoop')
+			if self.matriz[2][i+1] == 'javascript':
+				print('El que usa hadoop vive al lado del de js')
 			else:
 				self.puntos -= fail_score
 		except:
 			self.puntos -= punish_score
 
-		#The German smokes Prince.
+		# El que programa en c# vive al lado del que usa cassandra (a la izq)
 		try:
-			i = self.matriz[1].index('German')
-			if self.matriz[2][i] == 'Prince':
-				#print('The German smokes Prince.')
-				self.puntos += 1	
-				self.approve +=1
+			i = self.matriz[2].index('c#')
+			if self.matriz[4][i-1] == 'c#':
+				print('El que programa en c# vive a la izq del que usa cassandra')
 			else:
 				self.puntos -= fail_score
 		except:
 			self.puntos -= punish_score
 
-		#The Norwegian lives next to the blue house.
+		# El que usa Neo4J usa sublime
 		try:
-			i = self.matriz[1].index('Norwegian')
-			if self.matriz[0][i+1] == 'blue':
-				#print('The Norwegian lives next to the blue house.')
-				self.puntos += 1	
-				self.approve +=1
+			i = self.matriz[4].index('neo4j')
+			if self.matriz[3][i] == 'sublime':
+				print('El que usa neo4j usa sublime')
 			else:
 				self.puntos -= fail_score
 		except:
 			self.puntos -= punish_score
 
-		#print(self.table)
-		#print(self.score)
+		# El ingeniero usa mongo
+		try:
+			i = self.matriz[1].index('ingeniero')
+			if self.matriz[4][i] == 'mongo':
+				print('El ingeniero usa mongodb')
+			else:
+				self.puntos -= fail_score
+		except:
+			self.puntos -= punish_score
+
+		# El desarrollador vive al lado del de la casa azul (a la derecha)
+		try:
+			i = self.matriz[1].index('desarrollador')
+			if self.matriz[1][i+1] == 'desarrollador':
+				print('El desarrollador vive al lado del de la casa azul')
+			else:
+				self.puntos -= fail_score
+		except:
+			self.puntos -= punish_score
+
+	########################################################################
+	# Quien programa c++ en vim?
+
+		try:
+			i = self.matriz[2].index('c++')
+			if self.matriz[2][3] == 'vim':
+				print('Se encontró la respuesta: El ' + self.matriz[1] +' programa en c+ en vim')
+				self.encontrado = True
+		except:
+			print('Aun no se encuentra la solucion')
 
 class Puzzle:
 
@@ -333,12 +259,11 @@ class Puzzle:
 			x += 1
 			print('Iteration  %d' %x)
 			self.test()
-			approve =  self.population[0].approve
+			encontrado =  self.population[0].encontrado
 			self.crossOver(liveness, n_population)
 			self.mutate()
 			
-
-			if approve >= 14:
+			if encontrado:
 				break
 			pass
 
@@ -388,11 +313,11 @@ class Puzzle:
 
 				i = random.randint(0,2)
 				if i == 0:
-					newborn.matriz[x][y] = first.getTable(x,y)
+					newborn.matriz[x][y] = first.getMatriz(x,y)
 				elif i == 1:
-					newborn.matriz[x][y] = second.getTable(x,y)
+					newborn.matriz[x][y] = second.getMatriz(x,y)
 				else:
-					newborn.matriz[x][y] = third.getTable(x,y)
+					newborn.matriz[x][y] = third.getMatriz(x,y)
 				pass
 			pass
 		return newborn
@@ -402,11 +327,10 @@ class Puzzle:
 			self.population[x].test()
 			pass
 
-		self.population.sort(key=lambda x: x.score, reverse=True)
+		self.population.sort(key=lambda x: x.puntos, reverse=True)
 		for x in range(0,1):
 			print (self.population[x].approve)
 			pass
-
 
 puz = Puzzle()
 puz.solve()
