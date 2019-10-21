@@ -234,7 +234,7 @@ class AcertijoEinstein:
 		x = 0
 		while True:
 			x += 1
-			print('Iteration  %d' %x)
+			print('Iteración número:  %d' %x)
 			self.prueba()
 			restriccionesCumplidas =  self.poblacion[0].restriccionesCumplidas
 			if restriccionesCumplidas >= 15:
@@ -267,14 +267,14 @@ class AcertijoEinstein:
 				goodpoblacion.append(self.poblacion[i])
 			i += 1 
 			i %= len(self.poblacion)
-		newGeneration = []
-		while len(newGeneration) <= limit:
+		nuevaGeneracion = []
+		while len(nuevaGeneracion) <= limit:
 			primero = goodpoblacion[random.randint(0,len(goodpoblacion)-1)]
 			segundo = goodpoblacion[random.randint(0,len(goodpoblacion)-1)]
 			tercero = goodpoblacion[random.randint(0,len(goodpoblacion)-1)]
 			nuevo_individuo = self.cruza(primero, segundo, tercero)
-			newGeneration.append(nuevo_individuo)
-		self.poblacion = newGeneration
+			nuevaGeneracion.append(nuevo_individuo)
+		self.poblacion = nuevaGeneracion
 
 	def cruza(self, primero, segundo, tercero):
 		nuevo_individuo = matriz()
