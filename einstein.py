@@ -54,7 +54,7 @@ class matriz:
 				self.restriccionesCumplidas += 1
 			else:
 				self.puntos -= puntos_por_fallar
-				self.noCumplidas.append("El matemático vive en la casa roja")
+				self.noCumplidas.append("El matematico vive en la casa roja")
 		except:
 			self.puntos -= puntos_castigo
 
@@ -102,7 +102,7 @@ class matriz:
 				self.restriccionesCumplidas += 1
 			else:
 				self.puntos -= puntos_por_fallar
-				self.noCumplidas.append("El que vive en la casa verde está a la derecha del de la casa negra")
+				self.noCumplidas.append("El que vive en la casa verde esta a la derecha del de la casa negra")
 		except:
 			self.puntos -= puntos_castigo
 
@@ -234,7 +234,7 @@ class AcertijoEinstein:
 		x = 0
 		while True:
 			x += 1
-			print('Iteración número:  %d' %x)
+			print('Iteracion numero:  %d' %x)
 			self.prueba()
 			restriccionesCumplidas =  self.poblacion[0].restriccionesCumplidas
 			if restriccionesCumplidas >= 15:
